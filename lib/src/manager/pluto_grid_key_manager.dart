@@ -45,8 +45,7 @@ class PlutoGridKeyManager {
     required this.stateManager,
   });
 
-  final PublishSubject<PlutoKeyManagerEvent> _subject =
-      PublishSubject<PlutoKeyManagerEvent>();
+  final PublishSubject<PlutoKeyManagerEvent> _subject = PublishSubject<PlutoKeyManagerEvent>();
 
   PublishSubject<PlutoKeyManagerEvent> get subject => _subject;
 
@@ -63,12 +62,11 @@ class PlutoGridKeyManager {
   void init() {
     final normalStream = _subject.stream.where((event) => !event.needsThrottle);
 
-    final movingStream =
-        _subject.stream.where((event) => event.needsThrottle).transform(
-              ThrottleStreamTransformer(
-                (_) => TimerStream(_, const Duration(milliseconds: 1)),
-              ),
-            );
+    final movingStream = _subject.stream.where((event) => event.needsThrottle).transform(
+          ThrottleStreamTransformer(
+            (_) => TimerStream(_, const Duration(milliseconds: 1)),
+          ),
+        );
 
     _subscription = MergeStream([normalStream, movingStream]).listen(_handler);
   }
@@ -79,7 +77,7 @@ class PlutoGridKeyManager {
     if (stateManager.configuration.shortcut.handle(
       keyEvent: keyEvent,
       stateManager: stateManager,
-      state: RawKeyboard.instance,
+      state: HardwareKeyboard.instance,
     )) {
       return;
     }
