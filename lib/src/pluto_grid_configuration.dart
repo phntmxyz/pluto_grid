@@ -207,6 +207,7 @@ class PlutoGridStyleConfig {
     this.oddRowColor,
     this.evenRowColor,
     this.activatedColor = const Color(0xFFDCF5FF),
+    this.checkboxIconColor = const Color(0xFFDCF5FF),
     this.checkedColor = const Color(0x11757575),
     this.checkboxBorderColor = Colors.grey,
     this.semiSelectedColor = Colors.grey,
@@ -267,6 +268,7 @@ class PlutoGridStyleConfig {
     this.oddRowColor,
     this.evenRowColor,
     this.activatedColor = const Color(0xFF313131),
+    this.checkboxIconColor = const Color(0xFF313131),
     this.checkedColor = const Color(0x11202020),
     this.checkboxBorderColor = Colors.grey,
     this.semiSelectedColor = Colors.grey,
@@ -355,6 +357,9 @@ class PlutoGridStyleConfig {
 
   /// Activated Color. (Current or Selected row, cell)
   final Color activatedColor;
+
+  /// Checkbox icon color.
+  final Color checkboxIconColor;
 
   /// Checked Color. (Checked rows)
   final Color checkedColor;
@@ -487,6 +492,7 @@ class PlutoGridStyleConfig {
     PlutoOptional<Color?>? oddRowColor,
     PlutoOptional<Color?>? evenRowColor,
     Color? activatedColor,
+    Color? checkboxIconColor,
     Color? checkedColor,
     Color? checkboxBorderColor,
     Color? semiSelectedColor,
@@ -532,6 +538,7 @@ class PlutoGridStyleConfig {
       oddRowColor: oddRowColor == null ? this.oddRowColor : oddRowColor.value,
       evenRowColor: evenRowColor == null ? this.evenRowColor : evenRowColor.value,
       activatedColor: activatedColor ?? this.activatedColor,
+      checkboxIconColor: checkboxIconColor ?? this.checkboxIconColor,
       checkedColor: checkedColor ?? this.checkedColor,
       checkboxBorderColor: checkboxBorderColor ?? this.checkboxBorderColor,
       semiSelectedColor: semiSelectedColor ?? this.semiSelectedColor,
@@ -583,6 +590,7 @@ class PlutoGridStyleConfig {
             oddRowColor == other.oddRowColor &&
             evenRowColor == other.evenRowColor &&
             activatedColor == other.activatedColor &&
+            checkboxIconColor == other.checkboxIconColor &&
             checkedColor == other.checkedColor &&
             checkboxBorderColor == other.checkboxBorderColor &&
             semiSelectedColor == other.semiSelectedColor &&
@@ -630,6 +638,7 @@ class PlutoGridStyleConfig {
         oddRowColor,
         evenRowColor,
         activatedColor,
+        checkboxIconColor,
         checkedColor,
         checkboxBorderColor,
         semiSelectedColor,

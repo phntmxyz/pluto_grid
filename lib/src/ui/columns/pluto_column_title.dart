@@ -462,7 +462,7 @@ class CheckboxAllSelectionWidgetState extends PlutoStateWithChange<CheckboxAllSe
       scale: 0.86,
       unselectedColor: stateManager.configuration.style.iconColor,
       activeColor: stateManager.configuration.style.activatedBorderColor,
-      checkColor: stateManager.configuration.style.activatedColor,
+      checkColor: stateManager.configuration.style.checkboxIconColor,
       checkboxBorderColor: stateManager.configuration.style.checkboxBorderColor,
       semiSelectedColor: stateManager.configuration.style.semiSelectedColor,
     );
