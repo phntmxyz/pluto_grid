@@ -304,12 +304,12 @@ mixin ColumnState implements IPlutoGridState {
 
   @override
   PlutoColumn? get currentColumn {
-    return currentCell == null ? null : currentCell!.column;
+    return currentCell?.column;
   }
 
   @override
   String? get currentColumnField {
-    return currentCell == null ? null : currentCell!.column.field;
+    return currentCell?.column.field;
   }
 
   @override
@@ -573,10 +573,7 @@ mixin ColumnState implements IPlutoGridState {
   void autoFitColumn(BuildContext context, PlutoColumn column) {
     final String maxValue = refRows.fold('', (previousValue, element) {
       final value = column.formattedValueForDisplay(
-        element.cells.entries
-            .firstWhere((element) => element.key == column.field)
-            .value
-            .value,
+        element.cells.entries.firstWhere((element) => element.key == column.field).value.value,
       );
 
       if (previousValue.length < value.length) {
@@ -602,15 +599,11 @@ mixin ColumnState implements IPlutoGridState {
 
     // todo : Apply (popup type icon, checkbox, drag indicator, renderer)
 
-    EdgeInsets cellPadding =
-        column.cellPadding ?? configuration.style.defaultCellPadding;
+    EdgeInsets cellPadding = column.cellPadding ?? configuration.style.defaultCellPadding;
 
     resizeColumn(
       column,
-      textPainter.width -
-          column.width +
-          (cellPadding.left + cellPadding.right) +
-          2,
+      textPainter.width - column.width + (cellPadding.left + cellPadding.right) + 2,
     );
   }
 
@@ -1019,9 +1012,7 @@ mixin ColumnState implements IPlutoGridState {
       return false;
     }
 
-    final columns = showFrozenColumn
-        ? leftFrozenColumns + bodyColumns + rightFrozenColumns
-        : refColumns;
+    final columns = showFrozenColumn ? leftFrozenColumns + bodyColumns + rightFrozenColumns : refColumns;
 
     final resizeHelper = getColumnsResizeHelper(
       columns: columns,
